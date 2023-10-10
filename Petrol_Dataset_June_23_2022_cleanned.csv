@@ -1,4 +1,4 @@
-S#,Country,DailyOilConsumption(Barrels),World Share,Yearly Gallons Per Capita,Price Per Gallon (USD),Price Per Liter (USD),Price Per Liter (PKR),GDP Per Capita ( USD ),Gallons GDP Per Capita Can Buy,xTimes Yearly Gallons Per Capita Buy
+S#,Country,Daily_Oil_Consumption(Barrels),World_Share,Yearly_Gallons_Per_Capita,Price_Per_Gallon(USD),Price_Per_Liter(USD),Price_Per_Liter(PKR),GDP_Per_Capita(USD),Gallons_GDP_Per_Capita_Can_Buy,xTimes_Yearly_Gallons_Per_Capita_Buy
 1,United States of America,19687287,20%,934.30,5.19,1.37,289.97,63414.00,12218.00,13.00
 2,China,12791553,13%,138.70,5.42,1.43,302.87,10435.00,1925.00,14.00
 3,India,4443000,5%,51.40,5.05,1.33,281.93,1901.00,376.00,7.00
