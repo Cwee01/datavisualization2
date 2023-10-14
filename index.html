@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="styles.css" media="all">
+
+
+</head>
+<body>
+  
+  <div class="page">
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1 style="text-align: center">Daily Oil Consumption Around The World (June 2022)</h1>
+        <div id="ChoroplethMap" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-3">
+        <div class="description description-left">
+          <h2 style="margin-top: 10%;">Top 10 Countries' Daily Oil Consumption</h2>
+          <p>
+            In this visualisation, it shows the top 10 countries that having the most number
+            of daily oil consumption. From the visualisation, it is clear that <b>United States of America is having the highest
+            number.</b></p>
+        </div>
+      </div>
+      <div class="pure-u-3-5">
+        <div id="BarChart" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+    
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-2-3">
+        <div id="RadialChart" class="vis-container" style="margin-top: 5%;"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <h2>Yearly Gallons of Petrol Per Capita from Different Continent</h2>
+          <p>
+            This chart shows the Yearly Gallons of Petrol Per Capita in different regions. It is clear to see that North America is having the 
+            highest Yearly Gallons of petrol Per Capita among all the regions. In the previous visualisation, it shows United States of America having the
+            highest number of daily consumption and <b>United States of America is one of the country from North America</b>, therefore it does really 
+            affect the Yearly Gallons of Petrol Per Capita of North America.</p>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-3">
+        <div class="description description-left">
+          <h2>Price of Petrol in Different Regions</h2>
+          <p>
+            This chart shows the price of petrol from different regions. From the visualistion,
+            male has more suicide cases compare to female. This can be related as male could be more stressful
+            than female in different field. <b>Both male and female in Europe having the highest suicide rate</b> 
+            from this visualisation.</p>
+        </div>
+      </div>
+      <div class="pure-u-2-3">
+        <div id="ButterflyChart" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+    
+     <div class="pure-g">
+      <div class="pure-u-2-3">
+        <div id="scatter" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <h2>Number of Suicide and Suicide Rate</h2>
+          <p>
+            ...
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="pure-g">
+      <div class="pure-u-1-3">
+        <div class="description description-left">
+          <h2>Scatter plot</h2>
+          <p>
+            ...
+          </p>
+        </div>
+      </div>
+      <div class="pure-u-2-3">
+        <div id="scatterplot" class="vis-container"></div>
+      </div>
+    </div>
+  
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <p class="small-font">Created by Ng Chin Wee 30883504</h1>
+      </div>
+    </div>
+
+  </div> <!-- end page -->
+
+
+    <script type="text/javascript">
+        var spec1 = "worldmap.json";
+        vegaEmbed('#ChoroplethMap', spec1).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        var spec2 = "barchart_worldshare.json";
+        vegaEmbed('#BarChart', spec2).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+        
+        var spec3 = "radialchart_YGPC.json";
+        vegaEmbed('#RadialChart', spec3).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        var spec4 = "butterflyChart_gallonvsliter.json";
+        vegaEmbed('#ButterflyChart', spec4).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+        </script>
+    </body>
+</html>
