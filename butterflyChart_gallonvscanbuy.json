@@ -1,0 +1,87 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Cwee01/datavisualization2/main/Petrol_Dataset_June_23_2022_cleanned.csv"
+  },
+  "background": "#f9f9f5",
+  "spacing": 0,
+  "hconcat": [
+    {
+      "width": 250,
+      "height": 350,
+      "title": "Average Price Per Gallon (USD)",
+      "mark": "bar",
+      "encoding": {
+        "y": {"field": "Region", "axis": null},
+        "x": {
+          "aggregate": "average",
+          "field": "Price_Per_Gallon(USD)",
+          "title": "Price (USD)",
+          "axis": {"format": "s", "tickCount": 5},
+          "sort": "descending",
+          "scale": {"domain": [0, 10]}
+        },
+        "color": {
+          "field": "Region",
+          "scale": {"range": [
+                
+                "#00FF00",
+                "#9400D3",
+                "#377eb8",
+                "#e41a1c",
+                "#ff7f00",
+                "#984ea3"
+                
+                
+                ]}
+        },
+        "tooltip": [
+          {"field": "Region", "title": "Region"},
+          {
+            "aggregate": "average",
+            "field": "Price_Per_Gallon(USD)",
+            "format": ".2f",
+            "title": "Average Price(USD)"
+          }
+        ]
+      }
+    },
+    {
+      "width": 60,
+      "height": 350,
+      "view": {"stroke": null},
+      "mark": {"type": "text", "align": "center"},
+      "encoding": {
+        "y": {"field": "Region", "axis": null},
+        "text": {"field": "Region"}
+      }
+    },
+    {
+      "width": 250,
+      "height": 350,
+      "title": "Average Gallons Per Capita Can Buy",
+      "mark": "bar",
+      "encoding": {
+        "y": {"field": "Region", "title": null, "axis": null},
+        "x": {
+          "aggregate": "average",
+          "field": "Gallons_GDP_Per_Capita_Can_Buy",
+          "title": "Price (USD)",
+          "axis": {"format": "s", "tickCount": 10},
+          "scale": {"domain": [0, 20000]}
+        },
+        "color": {"field": "Region", "legend": null},
+        "tooltip": [
+          {"field": "Region", "title": "Region"},
+          {
+            "aggregate": "average",
+            "field": "Gallons_GDP_Per_Capita_Can_Buy",
+            "format": ".2f",
+            "title": "Average Gallons GDP per capita can buy"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}, "axis": {"grid": false}}
+}

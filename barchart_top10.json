@@ -1,0 +1,111 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "background": "#f9f9f5",
+    "height": 350,
+    "data": {
+      "url": "https://raw.githubusercontent.com/Cwee01/datavisualization2/main/Petrol_Dataset_June_23_2022_cleanned.csv"
+    },"transform": [
+      {"aggregate": [
+        {"op": "sum", "field": "Daily_Oil_Consumption(Barrels)", "as": "oil consumption (Barrels)"}
+      ],
+      "groupby": ["Country", "Region"]},
+      {
+        "window": [{"op": "rank", "as": "rank"}],
+        "sort": [{"field": "oil consumption (Barrels)", "order": "descending"}]
+      },
+      {"filter": "datum.rank <= 10"}
+    ],
+    
+    "encoding": {
+      "x": {
+        "field": "Country",
+        "type": "nominal",
+        "title": "Country",
+        "axis": {"labelAngle": -45}
+      },
+      "y": {
+        "field": "oil consumption (Barrels)",
+        "type": "quantitative",
+        "title": "Oil Consumption (Barrels)"
+      }
+    },
+  
+    "layer": [
+      {
+        "params": [
+          {
+            "name": "region_highlight",
+            "select": {"type": "point", "fields": ["Region"]},
+            "bind": "legend"
+          }
+        ],
+        "mark": "bar",
+        "encoding": {
+          "color": {
+            "field": "Region",
+            "type": "nominal",
+            "title": "Region",
+            "scale": {
+              "domain": [
+            "North America",
+            "South America",
+            "Oceania",
+            "Europe",
+            "Africa",
+            "Asia"
+          ],
+          "range": [
+            "#e41a1c",
+            "#984ea3",
+            "#ff7f00",
+            "#377eb8",
+            "#00FF00",
+            "#9400D3"
+          ]
+        }
+          },
+          "opacity": {
+            "condition": {"param": "region_highlight", "value": 0.6},
+            "value": 0.2
+          },
+          "tooltip": [
+            {"field": "Region", "type": "nominal", "title": "Region"},
+            {
+              "field": "oil consumption (Barrels)",
+              "type": "quantitative",
+              "title": "Daily oil consumption"
+            }
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "baseline": "top",
+          "fontSize": 16,
+          "fontStyle": "italic",
+          "dx": -25,
+          "dy": -10,
+          "fontWeight": "bold"
+        },
+        "transform": [
+          {"filter": {"param": "region_highlight"}},
+          {
+            "calculate": "datum['Country'] + ';' + datum['oil consumption (Barrels)']",
+            "as": "textresraw"
+          },
+          {"calculate": "split(datum.textresraw,';')", "as": "textres"}
+        ],
+        "encoding": {
+          "text": {"field": "textres"},
+          "color": {"value": "black"},
+          "opacity": {
+            "condition": {"test": "datum.Country=='United States of America'", "value": 1},
+            "value": 0
+          }
+        }
+      }
+    ]
+  }

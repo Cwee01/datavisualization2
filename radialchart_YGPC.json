@@ -1,0 +1,70 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 450,
+    "height": 350,
+    "background": "#f9f9f5",
+    "data": {
+      "url": "https://raw.githubusercontent.com/Cwee01/datavisualization2/main/Petrol_Dataset_June_23_2022_cleanned.csv"
+    },
+    "transform": [
+      {
+        "aggregate": [{"op": "mean", "field": "Yearly_Gallons_Per_Capita", "as": "mean YGPC"}],
+        "groupby": ["Region"]
+      },
+      {"window": [{"op": "rank", "as": "rank"}],
+        "sort": [{"field": "mean YGPC", "order": "descending"}]
+      }
+    ],
+    "layer": [{
+      "params": [
+        {
+          "name": "Region_highlight",
+          "select": {"type": "point", "fields": ["Region"]},
+          "bind": "legend"
+        }
+      ],
+      "mark": {"type": "arc", "innerRadius": 30, "stroke": "#fff"}
+    },
+    {"mark": {"type": "text", "radiusOffset": 55, "fontSize": 20, "fontWeight":"bold"},
+    "encoding": {
+      "text":{"field": "mean YGPC", "type": "quantitative", "format": ".2f"},
+      "opacity":{
+        "condition": {"param": "Region_highlight", "value": 1},
+        "value": 0
+      }
+    }}
+    ],
+    "encoding": {
+      "theta": {"field": "mean YGPC","type": "quantitative", "stack": true},
+      "radius": {
+        "field": "mean YGPC",
+        "scale": {"type": "sqrt", "zero": true, "rangeMin":20}
+      },
+      "color": {"field": "Region", "type": "nominal", "title": "Region",
+      "scale": {
+        "domain": [
+          "North America",
+          "South America",
+          "Oceania",
+          "Europe",
+          "Africa",
+          "Asia"
+        ],
+        "range": [
+          "#e41a1c",
+          "#984ea3",
+          "#ff7f00",
+          "#377eb8",
+          "#00FF00",
+          "#9400D3"
+        ]
+      }},
+      "opacity": {
+        "condition": {"param": "Region_highlight", "value": 0.7}, "value": 0.2
+      },
+      "tooltip":[
+        {"field": "Region", "title": "Region"},
+        {"field": "mean YGPC", "title": "Yearly Gallons Per Capita (Mean)", "format": ".2f"}
+      ]
+    }
+  }

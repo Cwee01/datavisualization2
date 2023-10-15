@@ -1,0 +1,92 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "background": "#f9f9f5",
+  "height": 350,
+  "data": {
+      "url": "https://raw.githubusercontent.com/Cwee01/datavisualization2/main/Petrol_Dataset_June_23_2022_cleanned.csv"},
+  
+  "transform": [
+    {"calculate": "datum.World_Share*100", "as": "World Share %"},
+  {
+      "aggregate": [{
+       "op": "sum",
+       "field": "World Share %",
+       "as": "World Share %"
+      }],
+      "groupby": ["Region"]
+    }
+  ],
+  "encoding": {
+    "x":{
+      "field": "Region",
+      "type": "nominal",
+      "axis": {"labelAngle": -45},
+      "sort": "-y"
+    },
+    "y": {
+
+      "aggregate": "sum",
+      "field": "World Share %",
+      "type": "quantitative",
+      "title": "World Share in percentage %"
+    },
+    "size": {"value": 55}
+    
+    
+  }, "layer": [
+    {
+      "params": [
+        {
+          "name": "Region_highlight",
+          "select": {"type": "point", "fields": ["Region"]},
+          "bind": "legend"
+        }
+      ],
+    
+      "mark":"bar",
+      "encoding": {
+        "color":{
+          "field": "Region",
+          "type": "nominal",
+          "title": "Region",
+          "scale": {
+            "domain":[
+              "North America",
+              "South America",
+              "Oceania",
+              "Europe",
+              "Africa",
+              "Asia"
+            ],
+            "range":[
+              "#e41a1c",
+              "#984ea3",
+              "#ff7f00",
+              "#377eb8",
+              "#00FF00",
+              "#9400D3"
+
+            ]
+          }
+        },
+        "tooltip": [
+          {"field": "Region", "type": "nominal", "title": "Region"},
+          {
+            "field": "World Share %",
+            "type": "quantitative",
+            "title": "World Share in percentage %"
+          }
+        ],
+        "opacity": {
+          "condition": {"param": "Region_highlight", "value": 0.7}, "value": 0.2
+        }
+      }
+    
+    }
+  ]
+  
+  
+    
+  
+}

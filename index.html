@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- CSS file -->
-  <link rel="stylesheet" type="text/css" href="styles.css" media="all">
+  <link rel="stylesheet" type="text/css" href="style.css" media="all">
 
 
 </head>
@@ -21,38 +21,41 @@
 
     <!-- pure grid group -->
     <div class="pure-g">
-      <div class="pure-u-1-1">
-        <h1 style="text-align: center">Daily Oil Consumption Around The World (June 2022)</h1>
-        <div id="ChoroplethMap" class="vis-container"></div>
+      <div class="pure-u-1">
+        <h1 style="text-align: center">Petrol Around The World (June 2022)</h1>
+        <div id="ChoroplethMap" class="vis-container" style="text-align: center;"></div>
       </div>
     </div>
     <!-- end pure grid group -->
 
     <!-- pure grid group -->
+    <h2 style="text-align: center">Top 10 Countries' Daily Oil Consumption</h2>
     <div class="pure-g">
-      <div class="pure-u-1-3">
-        <div class="description description-left">
-          <h2 style="margin-top: 10%;">Top 10 Countries' Daily Oil Consumption</h2>
-          <p>
-            In this visualisation, it shows the top 10 countries that having the most number
-            of daily oil consumption. From the visualisation, it is clear that <b>United States of America is having the highest
-            number.</b></p>
-        </div>
+      
+      <div class="pure-u-1">
+        <div id="BarChart2" class="vis-container" style="margin-top: 5%;"></div>
       </div>
-      <div class="pure-u-3-5">
-        <div id="BarChart" class="vis-container"></div>
+      
+    </div>
+    <div class="pure-u">
+      <div class="text">
+        <p>
+          In this visualisation, it shows the top 10 countries that having the most number
+          of daily oil consumption. From the visualisation, it is clear that <b>United States of America</b> is having the highest
+          number which is the only country from the North America and followed by China, India and Japan from the region Asia.
+        </p>
       </div>
     </div>
     <!-- end pure grid group -->
     
     <!-- pure grid group -->
+    <h2 style="text-align: center">Yearly Gallons of Petrol Per Capita from Different Continent</h2>
     <div class="pure-g">
       <div class="pure-u-2-3">
         <div id="RadialChart" class="vis-container" style="margin-top: 5%;"></div>
       </div>
       <div class="pure-u-1-3">
         <div class="description description-right">
-          <h2>Yearly Gallons of Petrol Per Capita from Different Continent</h2>
           <p>
             This chart shows the Yearly Gallons of Petrol Per Capita in different regions. It is clear to see that North America is having the 
             highest Yearly Gallons of petrol Per Capita among all the regions. In the previous visualisation, it shows United States of America having the
@@ -64,12 +67,14 @@
     <!-- end pure grid group -->
 
     <!-- pure grid group -->
+    <h2 style="text-align: center">Average Price per Gallons and How Much They Can Buy per Gallons in Different Regions</h2>
     <div class="pure-g">
       <div class="pure-u-1-3">
         <div class="description description-left">
-          <h2>Price of Petrol in Different Regions</h2>
           <p>
-            This chart shows the price of petrol from different regions. .</p>
+            This chart shows the average price of petrol and how much they can buy from different regions. From the visualistion,
+            the cheapest average price in South America has more average in gallons per capita can buy. 
+            from this visualisation.</p>
         </div>
       </div>
       <div class="pure-u-2-3">
@@ -77,35 +82,35 @@
       </div>
     </div>
     <!-- end pure grid group -->
-    
+    <h2 style="text-align: center">World Share of Petrol Across Regions</h2>
      <div class="pure-g">
       <div class="pure-u-2-3">
-        <div id="scatter" class="vis-container"></div>
+        <div id="BarChart" class="vis-container"></div>
       </div>
       <div class="pure-u-1-3">
         <div class="description description-right">
-          <h2>aaaa</h2>
           <p>
-            ...
+            This charts shows the world share of petrol for each regions. From this visualization, Asia has the highest percentage share for petrol compare to
+            other regions. From the visualization of top 10 countries' daily oil comsumption, we can see that <b>China, India, Japan, Saudi Arabia and South Korea</b>
+            are in the top 10. Hence, this might be the reason why Asia have the highest world share.
           </p>
         </div>
       </div>
     </div>
     
+    <h2 style="text-align: center">GDP vs Daily Oil Consumption</h2>
     <div class="pure-g">
-      <div class="pure-u-1-3">
-        <div class="description description-left">
-          <h2>Scatter plot</h2>
-          <p>
-            ...
-          </p>
-        </div>
-      </div>
-      <div class="pure-u-2-3">
-        <div id="scatterplot" class="vis-container"></div>
+      <div class="pure-u-1">
+        <div id="ScatterPlot" class="vis-container" style="text-align: center;"></div>
+        <p class="small-font" style="text-align: center;">
+          Use the region selection to select the region.
+        </p>
       </div>
     </div>
-  
+    <p>
+      This chart shows the GDP per Capita of the country and their daily oil consumption. From this visualization, we can observe how GDP per capita affect 
+      the oil consumption of the country. In other word, we can see weather a rich country uses alot of petrol/oil in their country.
+    </p>
     <div class="pure-g">
       <div class="pure-u-1-1">
         <p class="small-font">Created by Ng Chin Wee 30883504</h1>
@@ -131,8 +136,18 @@
             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
-        var spec4 = "butterflyChart_gallonvsliter.json";
+        var spec4 = "butterflyChart_gallonvscanbuy.json";
         vegaEmbed('#ButterflyChart', spec4).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        var spec5 = "barchart_top10.json";
+        vegaEmbed('#BarChart2', spec5).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+        
+        var spec6 = "scatterplot_gdpvsconsumption.json";
+        vegaEmbed('#ScatterPlot', spec6).then(function(result) {
             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
         </script>
