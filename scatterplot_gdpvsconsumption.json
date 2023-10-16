@@ -81,18 +81,18 @@
               "domain": [
                 "North America",
                 "South America",
+                "Oceania",
                 "Europe",
                 "Africa",
-                "Asia",
-                "Oceania"
+                "Asia"
               ],
               "range": [
                 "#e41a1c",
                 "#984ea3",
                 "#ff7f00",
-                "#a6cee3",
                 "#377eb8",
-                "#a65628"
+                "#00FF00",
+                "#9400D3"
               ]
             },
             "legend": {

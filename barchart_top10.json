@@ -27,7 +27,7 @@
       "y": {
         "field": "oil consumption (Barrels)",
         "type": "quantitative",
-        "title": "Oil Consumption (Barrels)"
+        "title": "Daily Oil Consumption (Barrels)"
       }
     },
   

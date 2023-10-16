@@ -8,11 +8,11 @@
     },
     "transform": [
       {
-        "aggregate": [{"op": "mean", "field": "Yearly_Gallons_Per_Capita", "as": "mean YGPC"}],
+        "aggregate": [{"op": "average", "field": "Yearly_Gallons_Per_Capita", "as": "average YGPC"}],
         "groupby": ["Region"]
       },
       {"window": [{"op": "rank", "as": "rank"}],
-        "sort": [{"field": "mean YGPC", "order": "descending"}]
+        "sort": [{"field": "average YGPC", "order": "descending"}]
       }
     ],
     "layer": [{
@@ -27,7 +27,7 @@
     },
     {"mark": {"type": "text", "radiusOffset": 55, "fontSize": 20, "fontWeight":"bold"},
     "encoding": {
-      "text":{"field": "mean YGPC", "type": "quantitative", "format": ".2f"},
+      "text":{"field": "average YGPC", "type": "quantitative", "format": ".2f"},
       "opacity":{
         "condition": {"param": "Region_highlight", "value": 1},
         "value": 0
@@ -35,9 +35,9 @@
     }}
     ],
     "encoding": {
-      "theta": {"field": "mean YGPC","type": "quantitative", "stack": true},
+      "theta": {"field": "average YGPC","type": "quantitative", "stack": true},
       "radius": {
-        "field": "mean YGPC",
+        "field": "average YGPC",
         "scale": {"type": "sqrt", "zero": true, "rangeMin":20}
       },
       "color": {"field": "Region", "type": "nominal", "title": "Region",
@@ -64,7 +64,7 @@
       },
       "tooltip":[
         {"field": "Region", "title": "Region"},
-        {"field": "mean YGPC", "title": "Yearly Gallons Per Capita (Mean)", "format": ".2f"}
+        {"field": "average YGPC", "title": "Yearly Gallons Per Capita (Average)", "format": ".2f"}
       ]
     }
   }
